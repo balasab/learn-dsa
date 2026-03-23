@@ -1,5 +1,3 @@
-const { Graph } = require('./graph');
-
 class PriorityQueue {
     constructor() {
         this.values = [];
