@@ -9,3 +9,5 @@ stack[stack.length - 1];
 stack.length === 0;
 // Size Time complexity: O(1)
 stack.length;
+
+// Last In First Out (LIFO)

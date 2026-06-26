@@ -20,9 +20,9 @@ class mergeSort {
         if (this.arr.length <= 1) {
             return this.arr;
         }
-        const mid = Math.floor(this.arr.length / 2);
-        const left = this.arr.slice(0, mid);
-        const right = this.arr.slice(mid);
+        const mid = Math.floor(this.arr.length / 2); // 1.5 will be floored as 1
+        const left = this.arr.slice(0, mid); // slice(0, 1) => [1]
+        const right = this.arr.slice(mid); // slice(1) => [2, 3, 4, 5]
         return this.merge(this.sort(left), this.sort(right));
     }
     merge(left, right) {

@@ -1,3 +1,4 @@
+// In JS, Map is implemented using Hash Table
 let hash = new Map();
 // Insert Time complexity: O(1)
 hash.set("key", "value");

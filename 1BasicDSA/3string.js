@@ -7,7 +7,7 @@ for (let i = 0; i < str.length; i++) {
 // Insert Time complexity: O(n)
 str = str + "world";
 // Delete Time complexity: O(n)
-str = str.slice(0, str.length - 1);
+str = str.slice(0, 2);
 // Search Time complexity: O(n)
 str.includes("hello");
 // Update Time complexity: O(n)

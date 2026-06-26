@@ -1,3 +1,23 @@
+/*
+    Prim's algorithm is a greedy algorithm that finds the minimum 
+    spanning tree of a weighted undirected graph.
+    It starts from an arbitrary vertex and grows the MST by 
+    repeatedly adding the cheapest edge that connects a vertex 
+    in the MST to a vertex outside the MST.
+
+    Difference from Kruskal's Algorithm:
+        - Prim's grows the tree from one vertex outwards
+        - Kruskal's builds the tree by merging smaller trees
+        - Prim's is better for dense graphs (E is closer to V^2) (Real World: eg. Dense road Network)
+        - Kruskal's is better for sparse graphs (E is closer to V) (Real World: eg. Sparse road Network)
+    Applications same as kruskal's algorithm
+
+    Time Complexity: O(E log V) with a binary heap
+    Space Complexity: O(V + E)
+
+    
+*/
+
 class PrimsAlgorithm {
     constructor(vertices) {
         this.vertices = vertices;

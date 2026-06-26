@@ -9,3 +9,5 @@ queue[0];
 queue.length === 0;
 // Size Time complexity: O(1)
 queue.length;
+
+// First In First Out (FIFO)

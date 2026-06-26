@@ -39,6 +39,19 @@ class LinkedList {
             current.next = current.next.next;
         }
     }
+    // Delete by Reference Time complexity: O(1)
+    deleteByRef(ref) {
+        ref.next = ref.next.next;
+    }
+    // insert by Reference Time complexity: O(1)
+    insertByRef(ref, data) {
+        if (!ref) {
+            return;
+        }
+        const newNode = new Node(data);
+        newNode.next = ref.next;
+        ref.next = newNode; s
+    }
     // Search Time complexity: O(n)
     search(data) {
         let current = this.head;
@@ -68,3 +81,5 @@ list.print();
 list.delete(2);
 list.print();
 console.log(list.search(1));
+
+

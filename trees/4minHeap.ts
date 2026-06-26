@@ -2,12 +2,27 @@
 Definition: A min heap is a complete binary tree 
 in which the value in each node is less than or equal to the values in its children.
 
+* Uses a top-to-bottom ordering (the heap property). 
+* In a Min-Heap, a parent node is smaller than both of its children, 
+* but there is absolutely no rule about whether the left child is bigger or smaller than the right child.
+* Always has min element at the top.
+
+Applications:
+1. Priority Queue
+2. Graph Algorithms: Dijkstra’s, Prim’s
+3. Event Simulation (Event-driven simulations)
+4. Huffman Coding
+5. Operating Systems (Task Scheduling)
+6. Statistics (Order statistics)
+
 */
-class minHeap {
+export class MinHeap<T = any> {
+    private heap: T[];
+
     constructor() {
         this.heap = [];
     }
-    insert(value) {
+    insert(value: T): void {
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
         /* Algorithm:
@@ -17,7 +32,7 @@ class minHeap {
         this.heap.push(value);
         this.heapifyUp();
     }
-    heapifyUp() {
+    heapifyUp(): void {
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
         /* Algorithm:
@@ -38,7 +53,7 @@ class minHeap {
             }
         }
     }
-    extractMin() {
+    extractMin(): T | null {
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
         /* Algorithm:
@@ -51,14 +66,17 @@ class minHeap {
             return null;
         }
         if (this.heap.length === 1) {
-            return this.heap.pop();
+            return this.heap.pop() ?? null;
         }
         const min = this.heap[0];
-        this.heap[0] = this.heap.pop();
-        this.heapifyDown();
+        const last = this.heap.pop();
+        if (last !== undefined) {
+            this.heap[0] = last;
+            this.heapifyDown();
+        }
         return min;
     }
-    heapifyDown() {
+    heapifyDown(): void {
         // Time Complexity: O(log n)
         // Space Complexity: O(1)
         /* Algorithm:
@@ -88,17 +106,17 @@ class minHeap {
             }
         }
     }
-    peek() {
+    peek(): T | undefined {
         // Time Complexity: O(1)
         // Space Complexity: O(1)
         return this.heap[0];
     }
-    size() {
+    size(): number {
         // Time Complexity: O(1)
         // Space Complexity: O(1)
         return this.heap.length;
     }
-    isEmpty() {
+    isEmpty(): boolean {
         // Time Complexity: O(1)
         // Space Complexity: O(1)
         return this.heap.length === 0;
