@@ -1,4 +1,4 @@
-import { MinHeap } from "../trees/4minHeap";
+import { MinHeap } from "../7trees/4minHeap";
 
 function priorityQueue() {
     const minHeap = new MinHeap();
