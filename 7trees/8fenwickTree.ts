@@ -1,3 +1,9 @@
+/*
+    FenwickTree is also known as Binary Indexed Tree (BIT)
+    Solves problem same as segment tree. Handle dynamic range queries and updates.
+    
+    Main Advantage over segment tree: space efficient, cleaner
+*/
 class FenwickTree {
     tree: number[];
     n: number;

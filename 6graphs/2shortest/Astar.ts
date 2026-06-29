@@ -151,11 +151,20 @@ const nodePositions: Record<string, { x: number; y: number }> = {
   D: { x: 3, y: 3 },
 };
 
-// 2. Define the Euclidean Heuristic
+// 2. Define Heuristic Functions
+
+// 2a. Euclidean Heuristic (straight-line distance - ideal for flying/unconstrained movement)
 const euclideanHeuristic: HeuristicFunction = (curr, target) => {
   const p1 = nodePositions[curr];
   const p2 = nodePositions[target];
   return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+};
+
+// 2b. Manhattan Heuristic (L1 / grid distance - ideal for 4-directional grid movement)
+const manhattanHeuristic: HeuristicFunction = (curr, target) => {
+  const p1 = nodePositions[curr];
+  const p2 = nodePositions[target];
+  return Math.abs(p2.x - p1.x) + Math.abs(p2.y - p1.y);
 };
 
 // 3. Build the Graph
@@ -172,7 +181,13 @@ router.addEdge("A", "C", 3);
 router.addEdge("B", "D", 5);
 router.addEdge("C", "D", 2);
 
-// 4. Find Path from A to D
-const shortestPath = router.findShortestPath("A", "D", euclideanHeuristic);
-console.log("Cheapest Path:", shortestPath);
+// 4. Find Path from A to D using two different heuristics
+console.log("--- Running A* with Euclidean Heuristic ---");
+const pathEuclidean = router.findShortestPath("A", "D", euclideanHeuristic);
+console.log("Euclidean Path:", pathEuclidean);
 // Output: ['A', 'C', 'D'] (Cost 5 is cheaper than A->B->D which costs 7)
+
+console.log("\n--- Running A* with Manhattan Heuristic ---");
+const pathManhattan = router.findShortestPath("A", "D", manhattanHeuristic);
+console.log("Manhattan Path:", pathManhattan);
+// Output: ['A', 'C', 'D'] (Both heuristics are admissible and find the optimal path)
